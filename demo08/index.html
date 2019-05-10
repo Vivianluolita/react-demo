@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      class LikeButton extends React.Component{
+        // constructor:state propsType this 
+        constructor(props){
+          super(props);
+          this.state = {
+            text:true
+          }
+          this.handleClick = this.handleClick.bind(this);
+        }
+        handleClick(){
+          this.setState({
+            text:!this.state.text
+          })
+          // this.state.text = !this.state.text;
+        }
+        render(){
+          //三元表达式
+          var word = this.state.text ? 'like':'don\'t like '
+          return(
+            <div onClick = {this.handleClick}>{word}</div>
+          )
+        }
+      }
+
+      ReactDOM.render(
+        <LikeButton />,
+        document.getElementById('example')
+      );
+    </script>
+  </body>
+</html>
+
